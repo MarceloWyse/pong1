@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cold8l7ea4jls"]
+
+[ext_resource type="PackedScene" uid="uid://buvjxjmww1sws" path="res://paddle.tscn" id="1_p4klt"]
+[ext_resource type="Script" path="res://paddle_right.gd" id="2_4c8tp"]
+
+[node name="PaddleRight" instance=ExtResource("1_p4klt")]
+script = ExtResource("2_4c8tp")
+
+[node name="Polygon2D" parent="CollisionPolygon2D" index="0"]
+color = Color(0.4, 0.235294, 0.666667, 1)

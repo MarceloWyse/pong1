@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bfmucfqlvhege"
+path="res://.godot/imported/To Build A Home.mp3-49f9c615e3f91a5365dc118c16409de6.mp3str"
+
+[deps]
+
+source_file="res://To Build A Home.mp3"
+dest_files=["res://.godot/imported/To Build A Home.mp3-49f9c615e3f91a5365dc118c16409de6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

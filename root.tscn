@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://cduuoeop5yn2d"]
+
+[ext_resource type="PackedScene" uid="uid://bhw22hol5glwn" path="res://paddle_left.tscn" id="1_e8pr4"]
+[ext_resource type="PackedScene" uid="uid://cold8l7ea4jls" path="res://paddle_right.tscn" id="2_5wmfn"]
+[ext_resource type="Script" path="res://Ball.gd" id="3_1yjyr"]
+[ext_resource type="Script" path="res://UI.gd" id="4_b6wgs"]
+[ext_resource type="FontFile" uid="uid://bnxp0nj8qgwpu" path="res://pixelmix.ttf" id="4_wminb"]
+[ext_resource type="AudioStream" uid="uid://bfux1wni254al" path="res://bounce.wav" id="6_st8in"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lgbsv"]
+font = ExtResource("4_wminb")
+font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_fnxmq"]
+font = ExtResource("4_wminb")
+font_size = 72
+
+[node name="Root" type="Node2D"]
+
+[node name="PaddleLeft" parent="." instance=ExtResource("1_e8pr4")]
+position = Vector2(13, 30)
+
+[node name="PaddleRight" parent="." instance=ExtResource("2_5wmfn")]
+position = Vector2(66, 31)
+
+[node name="Ball" type="Area2D" parent="."]
+position = Vector2(38, 56)
+script = ExtResource("3_1yjyr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ball"]
+polygon = PackedVector2Array(8, 0, 8, 8, 0, 8, 0, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="Ball/CollisionPolygon2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("4_b6wgs")
+
+[node name="LeftScore" type="Label" parent="UI"]
+text = "0"
+label_settings = SubResource("LabelSettings_lgbsv")
+
+[node name="RightScore" type="Label" parent="UI"]
+offset_left = 159.0
+offset_top = 364.0
+offset_right = 429.0
+offset_bottom = 439.0
+text = "0"
+label_settings = SubResource("LabelSettings_fnxmq")
+horizontal_alignment = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_st8in")
+
+[connection signal="area_entered" from="Ball" to="Ball" method="_on_area_entered"]
